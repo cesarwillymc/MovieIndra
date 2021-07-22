@@ -2,6 +2,7 @@ package com.cesarwillymc.movie.app
 
 import android.app.Application
 import android.content.Context
+import com.bugsnag.android.Bugsnag
 import com.cesarwillymc.movie.module.*
 import com.cesarwillymc.movie.module.module.ContextModule
 
@@ -16,9 +17,14 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        initBugsnack()
         initCoreDependencyInjection()
         initAppDependencyInjection()
 
+    }
+
+    private fun initBugsnack() {
+        Bugsnag.start(this)
     }
 
     private fun initCoreDependencyInjection() {
