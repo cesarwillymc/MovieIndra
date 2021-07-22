@@ -35,10 +35,16 @@ class ListMovieViewModel(
                    ListMovieViewState.Loading
                 }
             is NetworkState.Error ->
-                if (it.isAdditional) {
-                   ListMovieViewState.AddError
-                } else {
-                   ListMovieViewState.Error
+                when {
+                    it.isAdditional -> {
+                        ListMovieViewState.AddError
+                    }
+                    it.isEmpty -> {
+                        ListMovieViewState.EmptyError
+                    }
+                    else -> {
+                        ListMovieViewState.Error
+                    }
                 }
         }
     }

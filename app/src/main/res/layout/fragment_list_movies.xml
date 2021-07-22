@@ -17,20 +17,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include
-                android:id="@+id/include_list"
-                layout="@layout/view_movie_list"
-                app:viewState="@{viewModel.state}"/>
+
 
             <include
                 android:id="@+id/include_list_empty"
                 layout="@layout/view_movie_list_empty"
                 app:viewState="@{viewModel.state}"/>
-
+            <include
+                android:id="@+id/include_list"
+                layout="@layout/view_movie_list"
+                app:viewState="@{viewModel.state}"/>
             <include
                 android:id="@+id/include_list_error"
                 layout="@layout/view_movie_list_error"
-                app:viewState="@{viewModel.state}"/>
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:viewState="@{viewModel.state}"/>
 
             <include
                 android:id="@+id/include_list_loading"

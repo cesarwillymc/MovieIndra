@@ -17,7 +17,7 @@
     <string name="login_string_error_pass">Contraseña incorrecta</string>
     <string name="login_string_empty_pass">Introduce una contraseña</string>
     <string name="movies_empty">No se encontraron peliculas</string>
-    <string name="movie_error">Sucedio un error inesperado</string>
+    <string name="movie_error">Revisa tu conexion a internet</string>
     <string name="movie_try">Intenta nuevamente</string>
 
     <!-- Fragment Detail -->

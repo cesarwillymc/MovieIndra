@@ -16,6 +16,8 @@ sealed class ListMovieViewState:BaseViewState {
 
     object Error : ListMovieViewState()
 
+    object EmptyError : ListMovieViewState()
+
     object AddError : ListMovieViewState()
 
     object NoMoreElements : ListMovieViewState()
@@ -33,6 +35,8 @@ sealed class ListMovieViewState:BaseViewState {
     fun isError() = this is Error
 
     fun isAddError() = this is AddError
+
+    fun isEmptyError() = this is EmptyError
 
     fun isNoMoreElements() = this is NoMoreElements
 }
