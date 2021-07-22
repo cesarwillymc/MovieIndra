@@ -3,40 +3,37 @@ package com.cesarwillymc.movie.app
 import android.app.Application
 import android.content.Context
 import com.cesarwillymc.movie.module.*
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
-import org.koin.dsl.module
+import com.cesarwillymc.movie.module.module.ContextModule
 
 class MyApp : Application() {
+    lateinit var coreComponent: CoreComponent
+
     companion object {
-        private lateinit var instance: MyApp
-        fun getContextApp(): Context = instance
-        fun setInstance(instance: MyApp) {
-            this.instance = instance
-        }
+        @JvmStatic
+        fun coreComponent(context: Context) =
+            (context.applicationContext as? MyApp)?.coreComponent
     }
 
     override fun onCreate() {
         super.onCreate()
-        setInstance(this)
-        initDependencyInjection()
+        initCoreDependencyInjection()
+        initAppDependencyInjection()
+
     }
 
-    private fun initDependencyInjection() {
-        //Init koin dependency injection
-        startKoin {
-            // Koin Android logger
-            androidLogger()
+    private fun initCoreDependencyInjection() {
+        coreComponent = DaggerCoreComponent
+            .builder()
+            .contextModule(ContextModule(this))
+            .build()
+    }
 
-            //inject Android context
-            androidContext(this@MyApp)
-            // use modules
-            modules(module(override = true) {
-
-                modules(repoModule + useCaseModule + dbModule + networkModule + viewModelModule)
-            })
-        }
+    private fun initAppDependencyInjection() {
+        DaggerAppComponent
+            .builder()
+            .coreComponent(coreComponent)
+            .build()
+            .inject(this)
     }
 
 }
