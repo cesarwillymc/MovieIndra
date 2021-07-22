@@ -9,7 +9,7 @@ import javax.inject.Provider
 
 class MoviesPageDataSourceFactory
 @Inject constructor(
-    val providerDataSource: Provider<MoviesPageDataSource>
+    private val providerDataSource: Provider<MoviesPageDataSource>
 ) : DataSource.Factory<Int, Movie>() {
 
     var sourceLiveData = MutableLiveData<MoviesPageDataSource>()

@@ -13,17 +13,17 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideMarvelDatabase(context: Context) =
+    fun provideMoviesDatabase(context: Context) =
         Room.databaseBuilder(context, MoviesDB::class.java, "AppDB")
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build()
-    /*
+
     @Singleton
     @Provides
     fun provideMoviesDato(appdb: MoviesDB) =
-        appdb.ubicacionModelDao()
-     */
+        appdb.moviesListData()
+
 
 
 

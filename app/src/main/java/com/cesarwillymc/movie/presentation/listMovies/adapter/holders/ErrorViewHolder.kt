@@ -10,8 +10,6 @@ class ErrorViewHolder(
 ) : BaseViewHolder<ListItemErrorBinding>(
     binding = ListItemErrorBinding.inflate(inflater)
 ) {
-
-
     fun bind(viewModel: ListMovieViewModel) {
         binding.viewModel = viewModel
         binding.executePendingBindings()

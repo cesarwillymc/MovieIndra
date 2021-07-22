@@ -15,7 +15,8 @@ sealed class NetworkState {
 
 
     data class Error(
-        val isAdditional: Boolean = false
+        val isAdditional: Boolean = false,
+        val isEmpty: Boolean = true,
     ) : NetworkState()
 
 

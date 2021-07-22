@@ -26,8 +26,13 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding,MovieDetailV
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.setValue(navArgs.model)
+        setValuesViewModel()
         binding()
+    }
+
+    private fun setValuesViewModel() {
+        viewModel.setValue(navArgs.model)
+
     }
 
     private fun binding() {

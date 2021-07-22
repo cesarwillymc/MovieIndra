@@ -1,4 +1,3 @@
-
 package com.cesarwillymc.movie.presentation.listMovies.adapter
 
 import android.view.LayoutInflater

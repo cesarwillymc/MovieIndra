@@ -1,13 +1,15 @@
 package com.cesarwillymc.movie.core.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-
+@Entity(tableName = "moviedao")
 data class Movie(
     val adult: Boolean,
     @SerializedName("backdrop_path") val backdropPath: String?,
-    @SerializedName("genre_ids") val genreIds: List<Int>,
+    @PrimaryKey(autoGenerate = false)
     val id: Int,
     @SerializedName("original_language") val originalLanguage: String,
     @SerializedName("original_title") val originalTitle: String,

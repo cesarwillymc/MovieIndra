@@ -7,14 +7,16 @@
     <fragment android:id="@+id/authFragment"
               android:name="com.cesarwillymc.movie.presentation.authentificacion.AuthFragment"
               android:label="AuthFragment">
-        <action android:id="@+id/action_authFragment_to_listMoviesFragment" app:destination="@id/listMoviesFragment"/>
+        <action android:id="@+id/action_authFragment_to_listMoviesFragment" app:destination="@id/listMoviesFragment"
+                app:exitAnim="@android:anim/slide_in_left"/>
     </fragment>
 
     <fragment android:id="@+id/listMoviesFragment"
               android:name="com.cesarwillymc.movie.presentation.listMovies.ListMoviesFragment"
               android:label="ListMoviesFragment">
         <action android:id="@+id/action_listMoviesFragment_to_movieDetailFragment"
-                app:destination="@id/movieDetailFragment"/>
+                app:destination="@id/movieDetailFragment"
+                app:exitAnim="@android:anim/slide_in_left"/>
     </fragment>
     <fragment android:id="@+id/movieDetailFragment"
               android:name="com.cesarwillymc.movie.presentation.detailMovie.MovieDetailFragment"

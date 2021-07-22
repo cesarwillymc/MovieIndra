@@ -1,7 +1,7 @@
 package com.cesarwillymc.movie.presentation.listMovies.paging
 
-import androidx.annotation.VisibleForTesting
-import androidx.annotation.VisibleForTesting.PRIVATE
+
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.cesarwillymc.movie.core.model.Movie
@@ -13,17 +13,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 
-
-
 class MoviesPageDataSource @Inject constructor(
     val repository: MovieRepo,
     val scope: CoroutineScope,
 ) : PageKeyedDataSource<Int, Movie>() {
 
     val networkState = MutableLiveData<NetworkState>()
-    @VisibleForTesting(otherwise = PRIVATE)
-    var retry: (() -> Unit)? = null
 
+
+    var retry: (() -> Unit)? = null
+    var isCalledDB = false
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Movie>
@@ -34,13 +33,27 @@ class MoviesPageDataSource @Inject constructor(
                 retry = {
                     loadInitial(params, callback)
                 }
-                networkState.postValue(NetworkState.Error())
+
+                scope.launch {
+
+                    val response = repository.getMovieDB()
+                    if (response.isEmpty()) {
+                        networkState.postValue(NetworkState.Error(isEmpty = true))
+                    } else {
+                        isCalledDB = true
+                        networkState.postValue(NetworkState.Error(isEmpty = false))
+                        callback.onResult(response, null, 0)
+                    }
+
+                }
+
             }
         ) {
             val response = repository.getPopularMovies(
                 page = 1,
             )
-            callback.onResult(response.results, null, response.page+1)
+            isCalledDB = false
+            callback.onResult(response.results, null, response.page + 1)
             networkState.postValue(NetworkState.Success(isEmptyResponse = response.results.isEmpty()))
         }
     }
@@ -54,7 +67,12 @@ class MoviesPageDataSource @Inject constructor(
         scope.launch(
             CoroutineExceptionHandler { _, _ ->
                 retry = {
-                    loadAfter(params, callback)
+                    if (isCalledDB) {
+                        this.invalidate()
+
+                    } else {
+                        loadAfter(params, callback)
+                    }
                 }
                 networkState.postValue(NetworkState.Error(true))
             }
@@ -63,8 +81,9 @@ class MoviesPageDataSource @Inject constructor(
                 page = params.key,
             )
             callback.onResult(response.results, params.key + 1)
-            networkState.postValue(NetworkState.Success(true,response.results.isEmpty()))
+            networkState.postValue(NetworkState.Success(true, response.results.isEmpty()))
         }
+
     }
 
     override fun loadBefore(

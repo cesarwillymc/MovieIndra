@@ -1,6 +1,7 @@
 package com.cesarwillymc.movie.module
 
 import android.content.Context
+import com.cesarwillymc.movie.core.db.dao.MovieDao
 import com.cesarwillymc.movie.core.retrofit.MoviesApi
 import com.cesarwillymc.movie.data.repo.AuthRepo
 import com.cesarwillymc.movie.data.repo.MovieRepo
@@ -25,4 +26,5 @@ interface CoreComponent {
     fun authRepository(): AuthRepo
     fun moviesRepository(): MovieRepo
     fun apiService(): MoviesApi
+    fun movieDao(): MovieDao
 }
