@@ -2,10 +2,10 @@
 package com.cesarwillymc.movie.module
 
 import com.cesarwillymc.movie.app.MyApp
-import com.cesarwillymc.movie.module.scope.AppScope
+import com.cesarwillymc.movie.module.scope.FeatureScope
 import dagger.Component
 
-@AppScope
+@FeatureScope
 @Component(
     dependencies = [CoreComponent::class],
     modules = [AppModule::class]

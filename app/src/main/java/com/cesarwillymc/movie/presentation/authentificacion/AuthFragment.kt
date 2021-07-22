@@ -3,6 +3,7 @@ package com.cesarwillymc.movie.presentation.authentificacion
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.cesarwillymc.movie.R
 import com.cesarwillymc.movie.app.MyApp
 import com.cesarwillymc.movie.base.BaseFragment
@@ -11,7 +12,7 @@ import com.cesarwillymc.movie.presentation.authentificacion.di.DaggerLoginCompon
 import com.cesarwillymc.movie.presentation.authentificacion.di.LoginModule
 
 
-class AuthFragment : BaseFragment<FragmentAuthBinding,  AuthViewModel>(layoutId=R.layout.fragment_auth ) {
+class AuthFragment : BaseFragment<FragmentAuthBinding, AuthViewModel>(layoutId = R.layout.fragment_auth) {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,6 +31,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding,  AuthViewModel>(layoutId=
     override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
     }
+
     private fun signInNumberPhone() {
         if (viewModel.stateLogin.value == null) {
             viewModel.stateLogin.observe(viewLifecycleOwner) {
@@ -39,14 +41,11 @@ class AuthFragment : BaseFragment<FragmentAuthBinding,  AuthViewModel>(layoutId=
                     }
                     AuthViewState.Complete -> {
                         try {
-                           /* findNavController().navigate(
-                                LoginFragmentDirections.actionNavLoginToConfirmCodeFragment(
-                                    viewModel.dataCode,
-                                    viewModel.dataPhone
-                                )
-                            )*/
+                            findNavController().navigate(
+                                AuthFragmentDirections.actionAuthFragmentToListMoviesFragment()
+                            )
                         } catch (e: Exception) {
-                            Log.e("errornavi","$e")
+                            Log.e("errornavi", "$e")
                         }
 
                     }

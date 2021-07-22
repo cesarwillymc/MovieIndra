@@ -7,5 +7,10 @@
     <fragment android:id="@+id/authFragment"
               android:name="com.cesarwillymc.movie.presentation.authentificacion.AuthFragment"
               android:label="AuthFragment">
+        <action android:id="@+id/action_authFragment_to_listMoviesFragment" app:destination="@id/listMoviesFragment"/>
     </fragment>
+    <fragment android:id="@+id/listMoviesFragment"
+              android:name="com.cesarwillymc.movie.presentation.listMovies.ListMoviesFragment"
+              android:label="ListMoviesFragment"/>
+
 </navigation>

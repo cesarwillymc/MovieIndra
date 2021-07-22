@@ -1,6 +1,9 @@
 package com.cesarwillymc.movie.common
 
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
@@ -21,4 +24,13 @@ fun <VM : ViewModel> Fragment.viewModel(
     } else {
         ViewModelProvider(this, viewModelProviderFactory).get(factoryViewModel::class.java)
     }
+}
+
+fun <T> LifecycleOwner.observe(liveData: LiveData<T>, observer: (T) -> Unit) {
+    liveData.observe(
+        this,
+        Observer {
+            it?.let { t -> observer(t) }
+        }
+    )
 }
