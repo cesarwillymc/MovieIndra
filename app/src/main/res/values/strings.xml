@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">MovieIndra</string>
+    <string name="error_exceptio">"Surgio un error, asegurese de que cuenta con internet"</string>
+
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="hint_user">Usuario</string>
+    <string name="hint_pass">Contraseña</string>
+    <string name="text_user">Usuario:</string>
+    <string name="text_pass">Contraseña:</string>
+    <string name="text_forgot">Olvide mi contraseña.</string>
+    <!-- Fragment Auth -->
+
+    <string name="login_vacio"/>
+    <string name="login_string_error_user">El usuario es incorrecto</string>
+    <string name="login_string_empty_user">Debes introducir un usuario</string>
+
+    <string name="login_string_error_pass">Contraseña incorrecta</string>
+    <string name="login_string_empty_pass">Introduce una contraseña</string>
+    <string name="movies_empty">No se encontraron peliculas</string>
+    <string name="movie_error">Revisa tu conexion a internet</string>
+    <string name="movie_try">Intenta nuevamente</string>
+
+    <!-- Fragment Detail -->
+    <string name="movie_text">Movie</string>
+    <string name="video_text">Video</string>
+    <string name="launch_text">Lanzamiento</string>
+    <string name="popularity_text">Popularidad</string>
+    <string name="language_text">Idioma</string>
+    <string name="loren_ipsos">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+        has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+        and scrambled it to make a type specimen book.
+    </string>
 </resources>
