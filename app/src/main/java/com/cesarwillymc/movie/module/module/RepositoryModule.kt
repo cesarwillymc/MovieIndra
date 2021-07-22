@@ -6,6 +6,7 @@ import com.cesarwillymc.movie.data.repo.AuthRepo
 import com.cesarwillymc.movie.data.repo.AuthRepoImpl
 import com.cesarwillymc.movie.data.repo.MovieRepo
 import com.cesarwillymc.movie.data.repo.MovieRepoImpl
+import com.cesarwillymc.movie.data.utils.RequestUser
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -14,7 +15,7 @@ import javax.inject.Singleton
 class RepositoryModule {
     @Singleton
     @Provides
-    fun provideAuthRepo():  AuthRepo  = AuthRepoImpl()
+    fun provideAuthRepo(request: RequestUser):  AuthRepo  = AuthRepoImpl(request)
 
 
     @Singleton

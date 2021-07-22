@@ -50,6 +50,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 
 dependencies {
@@ -124,5 +125,7 @@ dependencies {
     // JUnit 5
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.4.0"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.4.0"
+    // Truth
+    testImplementation "com.google.truth:truth:1.0.1"
 
 }
