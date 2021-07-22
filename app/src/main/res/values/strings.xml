@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">MovieIndra</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_exceptio">"Surgio un error, asegurese de que cuenta con internet"</string>
+
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="hint_user">Usuario</string>
     <string name="hint_pass">Contraseña</string>
     <string name="text_user">Usuario:</string>
     <string name="text_pass">Contraseña:</string>
     <string name="text_forgot">Olvide mi contraseña.</string>
+    <!-- Fragment Auth -->
+
+    <string name="login_vacio"/>
+    <string name="login_string_error_user">El usuario es incorrecto</string>
+    <string name="login_string_empty_user">Debes introducir un usuario</string>
+
+    <string name="login_string_error_pass">Contraseña incorrecta</string>
+    <string name="login_string_empty_pass">Introduce una contraseña</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.cesarwillymc.movie.module
 
 import android.content.Context
+import com.cesarwillymc.movie.data.repo.AuthRepo
 import com.cesarwillymc.movie.module.module.ContextModule
 import com.cesarwillymc.movie.module.module.DatabaseModule
 import com.cesarwillymc.movie.module.module.NetworkModule
@@ -19,5 +20,5 @@ import javax.inject.Singleton
 )
 interface CoreComponent {
     fun context(): Context
-
+    fun authRepository(): AuthRepo
 }

@@ -15,10 +15,10 @@ class AuthRepoImpl:AuthRepo {
     private fun requestServer(user: String, password: String):Usuario{
         val passCorrect="123"
         val userCorrect="Admin"
-        if(user == userCorrect ){
+        if(user != userCorrect ){
             return  Usuario(message = "Usuario incorrecto",code = 401,user = null)
         }
-        if(password == passCorrect ){
+        if(password != passCorrect ){
             return  Usuario(message = "Contraseña incorrecta",code = 401,user = null)
         }
         return Usuario(message = "Se ejecuto correctamente",code = 200,user = "123456789")

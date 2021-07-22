@@ -9,4 +9,10 @@
     <!--Text colors-->
     <color name="textHeadline">#f1f1f1</color>
     <color name="textBody">#d3d3d3</color>
+
+
+    <color name="enabled">#000</color>
+    <color name="disable">#7F7F83</color>
+    <color name="blue">#3F51B5</color>
+
 </resources>

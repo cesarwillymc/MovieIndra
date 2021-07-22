@@ -10,7 +10,7 @@ import javax.inject.Singleton
 class RepositoryModule {
     @Singleton
     @Provides
-    fun provideAuhRepository(): AuthRepo = AuthRepoImpl()
+    fun provideAuthRepo():  AuthRepo  = AuthRepoImpl()
 
 
 
