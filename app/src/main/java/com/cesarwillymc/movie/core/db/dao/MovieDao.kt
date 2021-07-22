@@ -10,6 +10,7 @@ import com.cesarwillymc.movie.core.model.Movie
 interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMovie(item: Movie)
-    @Query("SELECT * FROM moviedao" )
+
+    @Query("SELECT * FROM moviedao")
     fun getAllMovies(): List<Movie>
 }
