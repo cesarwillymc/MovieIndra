@@ -18,12 +18,12 @@ class DatabaseModule {
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build()
-    /*
+
     @Singleton
     @Provides
     fun provideMoviesDato(appdb: MoviesDB) =
-        appdb.ubicacionModelDao()
-     */
+        appdb.moviesListData()
+
 
 
 

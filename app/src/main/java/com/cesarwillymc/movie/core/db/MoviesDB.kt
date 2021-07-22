@@ -2,6 +2,7 @@ package com.cesarwillymc.movie.core.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.cesarwillymc.movie.core.db.dao.MovieDao
 
 @Database(entities = [],
     exportSchema = false,
@@ -9,5 +10,6 @@ import androidx.room.RoomDatabase
 
 abstract class MoviesDB : RoomDatabase() {
 
+    abstract fun moviesListData(): MovieDao
 
 }
