@@ -9,7 +9,6 @@ import java.io.Serializable
 data class Movie(
     val adult: Boolean,
     @SerializedName("backdrop_path") val backdropPath: String?,
-    @SerializedName("genre_ids") val genreIds: List<Int>,
     @PrimaryKey(autoGenerate = false)
     val id: Int,
     @SerializedName("original_language") val originalLanguage: String,
