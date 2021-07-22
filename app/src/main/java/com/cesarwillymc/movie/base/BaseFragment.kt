@@ -38,7 +38,6 @@ abstract class BaseFragment<B : ViewDataBinding, M : ViewModel>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.e("onCreateView","entro aca")
         viewBinding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner
         onInitDataBinding()

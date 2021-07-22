@@ -1,18 +1,14 @@
 package com.cesarwillymc.movie.common
 
-import android.util.Log
 import com.cesarwillymc.movie.R
 
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import org.ocpsoft.prettytime.PrettyTime
-import java.util.*
 
 @set:BindingAdapter("visible")
 var View.visible
@@ -51,7 +47,6 @@ fun CardView.setEnabledView(enabled: Boolean) {
 
 @BindingAdapter("imageUrl", requireAll = false)
 fun ImageView.imageUrl(url: String?) {
-    Log.e("imag","$url")
     Glide.with(this).load("https://image.tmdb.org/t/p/w500$url").into(this)
 }
 
@@ -62,11 +57,5 @@ fun RecyclerView.setItemDecorationSpacing(spacingPx: Float) {
     )
 }
 
-@BindingAdapter("timeAgo", requireAll = false)
-fun TextView.timeAgo(time: Long) {
-    val prettyTime = PrettyTime(Locale.getDefault())
-    val ago: String = prettyTime.format(Date(time))
-    text=ago
-}
 
 

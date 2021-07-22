@@ -1,7 +1,9 @@
 package com.cesarwillymc.movie.presentation.listMovies
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cesarwillymc.movie.R
@@ -17,7 +19,8 @@ import com.cesarwillymc.movie.presentation.listMovies.di.MovieListModule
 import javax.inject.Inject
 
 
-class ListMoviesFragment : BaseFragment<FragmentListMoviesBinding,ListMovieViewModel>(layoutId = R.layout.fragment_list_movies) {
+class ListMoviesFragment :
+    BaseFragment<FragmentListMoviesBinding, ListMovieViewModel>(layoutId = R.layout.fragment_list_movies) {
     @Inject
     lateinit var viewAdapter: ListMovieAdapter
 
@@ -44,7 +47,7 @@ class ListMoviesFragment : BaseFragment<FragmentListMoviesBinding,ListMovieViewM
         viewBinding.includeList.movieList.apply {
             adapter = viewAdapter
             (layoutManager as? GridLayoutManager)?.spanSizeLookup = viewAdapter.getSpanSizeLookup()
-            layoutManager= GridLayoutManager(requireActivity(), 2)
+            layoutManager = GridLayoutManager(requireActivity(), 2)
         }
     }
 
@@ -66,11 +69,18 @@ class ListMoviesFragment : BaseFragment<FragmentListMoviesBinding,ListMovieViewM
                 viewAdapter.submitState(MovieListAdapterState.NoMore)
         }
     }
+
     private fun onViewEvent(viewEvent: MovieListViewEvent) {
         when (viewEvent) {
-            is MovieListViewEvent.OpenMovieDetail ->{}
-
+            is MovieListViewEvent.OpenMovieDetail -> {
+                findNavController().navigate(
+                    ListMoviesFragmentDirections.actionListMoviesFragmentToMovieDetailFragment(
+                        viewEvent.movie
+                    )
+                )
+            }
         }
     }
+
 
 }

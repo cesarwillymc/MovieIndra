@@ -16,9 +16,18 @@
 
     <string name="login_string_error_pass">Contraseña incorrecta</string>
     <string name="login_string_empty_pass">Introduce una contraseña</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="movies_empty">No se encontraron peliculas</string>
     <string name="movie_error">Sucedio un error inesperado</string>
     <string name="movie_try">Intenta nuevamente</string>
+
+    <!-- Fragment Detail -->
+    <string name="movie_text">Movie</string>
+    <string name="video_text">Video</string>
+    <string name="launch_text">Lanzamiento</string>
+    <string name="popularity_text">Popularidad</string>
+    <string name="language_text">Idioma</string>
+    <string name="loren_ipsos">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+        has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+        and scrambled it to make a type specimen book.
+    </string>
 </resources>

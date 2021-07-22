@@ -5,14 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
+import com.cesarwillymc.movie.common.SingleLiveData
 import com.cesarwillymc.movie.core.model.Movie
 import com.cesarwillymc.movie.presentation.listMovies.paging.MoviesPageDataSourceFactory
 import com.cesarwillymc.movie.presentation.listMovies.state.NetworkState
 
 class ListMovieViewModel(
-    val dataSourceFactory: MoviesPageDataSourceFactory
+    private val dataSourceFactory: MoviesPageDataSourceFactory
 ):ViewModel() {
-    val networkState = Transformations.switchMap(dataSourceFactory.sourceLiveData) {
+    private val networkState = Transformations.switchMap(dataSourceFactory.sourceLiveData) {
         it.networkState
     }
 
@@ -52,7 +53,7 @@ class ListMovieViewModel(
         dataSourceFactory.retry()
     }
 
-    val event = MutableLiveData<MovieListViewEvent>()
+    val event = SingleLiveData<MovieListViewEvent>()
     fun openMovieDetail(movieID: Movie) {
         event.postValue(MovieListViewEvent.OpenMovieDetail(movieID))
     }

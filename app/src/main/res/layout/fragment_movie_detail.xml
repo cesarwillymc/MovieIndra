@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="viewModel" type="com.cesarwillymc.movie.presentation.detailMovie.MovieDetailViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:context=".presentation.detailMovie.MovieDetailFragment">
+
+        <ImageView
+            android:id="@+id/imgMoviePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen200"
+            android:scaleType="fitXY"
+            android:background="@color/blue"
+            android:backgroundTint="@color/blue"
+            app:imageUrl="@{viewModel.stateMovie.backdropPath}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"/>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="227dp"/>
+
+        <TextView
+            android:id="@+id/txtMovieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dimen15"
+            android:paddingVertical="@dimen/dimen10"
+            android:textSize="@dimen/text25"
+            android:text="@{viewModel.stateMovie.title}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline3"/>
+
+        <TextView
+            android:id="@+id/txtMovieDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dimen15"
+            android:paddingVertical="@dimen/dimen5"
+            android:text="@{viewModel.stateMovie.overview}"
+            tools:text="@string/loren_ipsos"
+            app:layout_constraintTop_toBottomOf="@+id/txtMovieTitle"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen15"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMovieDescription">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/dimen8"
+                app:cardCornerRadius="@dimen/dimen10">
+
+                <LinearLayout
+                    android:layout_width="@dimen/dimen100"
+                    android:layout_height="@dimen/dimen80"
+                    android:background="@drawable/card_movie_shape"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/launch_text"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtMovieDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="10/08/2020"
+                        android:text="@{viewModel.stateMovie.releaseDate}"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/dimen8"
+                android:layout_marginHorizontal="@dimen/dimen20"
+                android:layout_marginVertical="@dimen/dimen5"
+                app:cardCornerRadius="@dimen/dimen10">
+
+                <LinearLayout
+                    android:layout_width="@dimen/dimen100"
+                    android:layout_height="@dimen/dimen90"
+                    android:background="@drawable/card_movie_shape"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/popularity_text"
+
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txt_movie_popularity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="6.5"
+                        android:text="@{Double.toString(viewModel.stateMovie.voteAverage)}"
+                        android:textSize="@dimen/text19"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/dimen8"
+                app:cardCornerRadius="@dimen/dimen10">
+
+                <LinearLayout
+                    android:layout_width="@dimen/dimen100"
+                    android:layout_height="@dimen/dimen80"
+                    android:background="@drawable/card_movie_shape"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/language_text"
+
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/txtMovieLanguage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="ES"
+                        android:text="@{viewModel.stateMovie.originalLanguage}"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_back_ios" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
