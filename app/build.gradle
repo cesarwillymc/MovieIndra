@@ -52,7 +52,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
+    packagingOptions {
+        exclude 'META-INF/*'
+    }
 }
 
 dependencies {
@@ -111,7 +113,7 @@ dependencies {
 
     //Unit test
     //Mockk
-    implementation "io.mockk:mockk:1.10.2"
+    testImplementation "io.mockk:mockk:1.10.2"
     //Room Test
     implementation "androidx.room:room-testing:2.3.0"
 
